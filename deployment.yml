@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mydeploy1
+  name: mydeploy1
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydeploy1
+  template:
+    metadata:
+      labels:
+        app: mydeploy1
+    spec:
+      containers:
+      - image: kbagwari035/my-note-app
+        name: kbagwari035
+        ports:
+         - containerPort: 8000
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mydeploy1
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8000
+    nodePort: 30001
+  selector:
+    app: mydeploy1
+  type: NodePort
+
+        

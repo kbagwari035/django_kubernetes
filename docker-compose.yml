@@ -1,0 +1,6 @@
+version : "3.3"
+services :
+  web :
+     image : kbagwari035/my-note-app:latest
+     ports :
+         - "8003:8000"
