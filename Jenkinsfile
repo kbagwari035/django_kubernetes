@@ -24,12 +24,20 @@ pipeline {
                 }
             }
         }
-        stage("Deploy"){
+        stage("Deploy on Kubernetes"){
             steps {
                 echo "Deploying the container"
-                sh "docker-compose down && docker-compose up -d"
-
+                sshagent(['K8s']) {
+                sh "scp deployment.yml devops@192.168.56.115:"
+                script{
+                    try{
+                        sh "ssh devops@192.168.56.115 kubectl apply -f deployment.yml"
+                    }catch(error){
+                        sh "ssh devops@192.168.56.115 kubectl apply -f deployment.yml"
+                    }
+                  }
+                }
+              }
             }
         }
     }
-}
