@@ -1,12 +1,8 @@
 # Simple Notes App
 This is a simple notes app built with React and Django.
 
-## Requirements
-1. Python 3.9
-2. Node.js
-3. React
 
-## Deployment of node.js app in kubernetes cluster using Jenkins Pipeline
+## Deployment of node.js app in kubernetes Cluster using Jenkins Pipeline ( Developer--->GitHub--->Jenkins----->DockerBuildImage--->DockerPushToRegistry---->Code Deploy On Kubernetes cluster using NordPort)
 1. Clone the repository
 ```
 git https://github.com/kbagwari035/django_kubernetes.git
